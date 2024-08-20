@@ -1,0 +1,24 @@
+
+### General
+__pycahce__/
+*.pyc
+.hypothesis/
+.vscode/
+*.npy
+*.pickle
+
+### Dataset
+data/celeba
+data/MSCOCO
+data/VOCdevkit
+data/NUS-WIDE
+data/VISPR
+data/WIDER
+data/VAW
+
+
+### Runs Directory
+runs_*/
+
+### Notebook Directory
+notebook/
