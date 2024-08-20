@@ -20,7 +20,8 @@ from torch.utils.tensorboard.writer import SummaryWriter
 from datasets.mscoco import load_coco_dataset, COCO_NUM_CLASSES, COCO_ATTRIBUTE_NAMES
 from models import ProbFeatureEmbedModel
 from losses import load_loss_function
-from utils import load_checkpoint, save_checkpoint, save_args
+from utils.checkpoint import load_checkpoint, save_checkpoint
+from utils.args import save_args
 from utils.train_eval import training, evaluation
 from utils.learning_rate import set_learning_rate
 
