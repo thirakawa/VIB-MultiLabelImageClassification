@@ -3,7 +3,7 @@
 
 
 import sys
-sys.path.append("../")
+sys.path.append("../../")
 
 import os
 import re
@@ -17,7 +17,7 @@ import torch.backends.cudnn as cudnn
 from torch.utils.tensorboard.writer import SummaryWriter
 
 ### import from multilabel module
-from datasets.voc import load_voc_dataset, VOC_NUM_CLASSES, VOC_ATTRIBUTE_NAMES
+from datasets.mscoco import load_coco_dataset, COCO_NUM_CLASSES, COCO_ATTRIBUTE_NAMES
 from models import VIBClassificationModel1
 from losses import load_loss_function
 from utils.checkpoint import load_checkpoint, save_checkpoint
@@ -59,12 +59,12 @@ def main():
 
     ### dataset -------------------------------------------
     print("load dataset")
-    _, _, train_loader, val_loader = load_voc_dataset(args.data_root, '2007', args.batch_size, args.num_workers)
+    _, _, train_loader, val_loader = load_coco_dataset(args.data_root, args.batch_size, args.num_workers)
 
     ### network model -------------------------------------
     model = VIBClassificationModel1(
         model_name=args.model,
-        num_classes=VOC_NUM_CLASSES,
+        num_classes=COCO_NUM_CLASSES,
         embed_dim=args.embed_dim,
         pretrained=args.pretrained
     )
@@ -99,7 +99,7 @@ def main():
         print("evaluate test data ...")
         evaluation(
             model=model, data_loader=val_loader,
-            attribute_names=VOC_ATTRIBUTE_NAMES, n_sampling=args.n_sampling, writer=None,
+            attribute_names=COCO_ATTRIBUTE_NAMES, n_sampling=args.n_sampling, writer=None,
             result_dir_path=os.path.join(args.logdir, RESULT_DIR_VAL % resume_postfix)
         )
 
@@ -128,7 +128,7 @@ def main():
         ### validation
         print("evaluation ...")
         score = evaluation(
-            model, val_loader, VOC_ATTRIBUTE_NAMES, n_sampling=0,
+            model, val_loader, COCO_ATTRIBUTE_NAMES, n_sampling=0,
             writer=writer, epoch=epoch, result_dir_path=None
         )
 

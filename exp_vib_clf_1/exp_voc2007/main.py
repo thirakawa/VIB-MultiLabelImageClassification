@@ -3,7 +3,7 @@
 
 
 import sys
-sys.path.append("../")
+sys.path.append("../../")
 
 import os
 import re
@@ -59,7 +59,7 @@ def main():
 
     ### dataset -------------------------------------------
     print("load dataset")
-    _, _, train_loader, val_loader = load_voc_dataset(args.data_root, '2012', args.batch_size, args.num_workers)
+    _, _, train_loader, val_loader = load_voc_dataset(args.data_root, '2007', args.batch_size, args.num_workers)
 
     ### network model -------------------------------------
     model = VIBClassificationModel1(
