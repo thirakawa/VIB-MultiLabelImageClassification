@@ -18,7 +18,7 @@ from torch.utils.tensorboard.writer import SummaryWriter
 
 ### import from multilabel module
 from datasets.voc import load_voc_dataset, VOC_NUM_CLASSES, VOC_ATTRIBUTE_NAMES
-from models import ProbFeatureEmbedModel
+from models import VIBClassificationModel1
 from losses import load_loss_function
 from utils.checkpoint import load_checkpoint, save_checkpoint
 from utils.args import save_args
@@ -62,7 +62,7 @@ def main():
     _, _, train_loader, val_loader = load_voc_dataset(args.data_root, '2012', args.batch_size, args.num_workers)
 
     ### network model -------------------------------------
-    model = ProbFeatureEmbedModel(
+    model = VIBClassificationModel1(
         model_name=args.model,
         num_classes=VOC_NUM_CLASSES,
         embed_dim=args.embed_dim,

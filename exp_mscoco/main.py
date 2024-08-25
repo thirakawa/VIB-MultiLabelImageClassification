@@ -18,7 +18,7 @@ from torch.utils.tensorboard.writer import SummaryWriter
 
 ### import from multilabel module
 from datasets.mscoco import load_coco_dataset, COCO_NUM_CLASSES, COCO_ATTRIBUTE_NAMES
-from models import ProbFeatureEmbedModel
+from models import VIBClassificationModel1
 from losses import load_loss_function
 from utils.checkpoint import load_checkpoint, save_checkpoint
 from utils.args import save_args
@@ -62,7 +62,7 @@ def main():
     _, _, train_loader, val_loader = load_coco_dataset(args.data_root, args.batch_size, args.num_workers)
 
     ### network model -------------------------------------
-    model = ProbFeatureEmbedModel(
+    model = VIBClassificationModel1(
         model_name=args.model,
         num_classes=COCO_NUM_CLASSES,
         embed_dim=args.embed_dim,

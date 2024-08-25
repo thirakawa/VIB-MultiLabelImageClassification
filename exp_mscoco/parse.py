@@ -7,7 +7,7 @@ import json
 import random
 from argparse import ArgumentParser
 
-from models import MODEL_NAMES
+from models.vib_classification1 import MODEL_NAMES
 from losses import LOSS_NAMES
 
 
